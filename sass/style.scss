@@ -1,20 +1,20 @@
 @font-face {
   font-family: "Alegreya";
-  src: url("/fonts/Alegreya-Bold.woff2") format("woff2");
+  src: url("../fonts/Alegreya-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Alegreya";
-  src: url("/fonts/Alegreya-Regular.woff2") format("woff2");
+  src: url("../fonts/Alegreya-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Playfair";
-  src: url("/fonts/Playfair_9pt-Bold.woff2") format("woff2");
+  src: url("../fonts/Playfair_9pt-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -22,14 +22,14 @@
 
 @font-face {
   font-family: "ProximaNova";
-  src: url("/fonts/ProximaNova-Regular.woff2") format("woff2");
+  src: url("../fonts/ProximaNova-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Scriptina";
-  src: url("/fonts/scriptina.regular.woff2") format("woff2");
+  src: url("../fonts/scriptina.regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -333,7 +333,7 @@ body {
   @include display-align();
   flex-direction: column;
   justify-content: center;
-  background: url("/images/main-images-bread.jpg") top / cover no-repeat;
+  background: url("../images/main-images-bread.jpg") top / cover no-repeat;
   width: 100%;
   height: 100vh;
   z-index: 1;
@@ -378,12 +378,13 @@ body {
 
 .art-cake {
   color: $color-gray;
-  background: url("/images/art-of-cakes-background.jpg") center/cover no-repeat;
+  background: url("../images/art-of-cakes-background.jpg") center/cover
+    no-repeat;
 
   &-border-top {
     position: absolute;
     content: "";
-    background: url("/icons/border-bullets.png") center/contain no-repeat;
+    background: url("../icons/border-bullets.png") center/contain no-repeat;
     width: 100%;
     height: 100px;
     margin-top: -50px;
@@ -425,7 +426,7 @@ body {
     &::before {
       position: absolute;
       content: "";
-      background: url("/images/12-side-art-cake.png") center/contain no-repeat;
+      background: url("../images/12-side-art-cake.png") center/contain no-repeat;
       top: 9.5em;
       left: 13em;
       width: 250px;
@@ -471,7 +472,7 @@ body {
 
 .tasty-cook {
   color: $color-gray;
-  background: url("/images/tasty-cook-background.jpg") center/cover no-repeat;
+  background: url("../images/tasty-cook-background.jpg") center/cover no-repeat;
   padding-inline: 115px;
 
   &-section {
@@ -497,8 +498,8 @@ body {
     &::after {
       position: absolute;
       content: "";
-      background: url("/images/tasty-cook-background-right.png") center/contain
-        no-repeat;
+      background: url("../images/tasty-cook-background-right.png")
+        center/contain no-repeat;
       z-index: -1;
       width: 270px;
       height: 294px;
@@ -569,7 +570,8 @@ body {
     position: absolute;
     width: 200px;
     aspect-ratio: 1;
-    background: url("/images/tasty-cook-ready-in-bg.png") center/cover no-repeat;
+    background: url("../images/tasty-cook-ready-in-bg.png") center/cover
+      no-repeat;
     filter: $filter-shadow;
     top: -4em;
     right: -8em;
@@ -604,11 +606,11 @@ body {
 .price-schedule {
   position: relative;
   font-family: $font-family-title;
-  background: url("/images/price-schedule-bg.jpg") center/cover no-repeat;
+  background: url("../images/price-schedule-bg.jpg") center/cover no-repeat;
   &::after {
     position: absolute;
     content: "";
-    background: url("/images/price-schedule-right-image.png") center/contain
+    background: url("../images/price-schedule-right-image.png") center/contain
       no-repeat;
     width: 346px;
     height: 204px;
@@ -665,7 +667,7 @@ body {
       &::before {
         display: flex;
         content: "";
-        background: url("/icons/schedule-price-spikelets.png") center/cover
+        background: url("../icons/schedule-price-spikelets.png") center/cover
           no-repeat;
         width: 90px;
         height: 27px;
@@ -679,7 +681,7 @@ body {
     flex-direction: column;
     align-items: center;
     color: $color-gray;
-    // background: url("/images/price-schedule-escape-bg.png") center/contain
+    // background: url("../images/price-schedule-escape-bg.png") center/contain
     //   no-repeat;
     background-color: #f3f1e9;
     border: 1px dashed #9e9c93;
@@ -714,8 +716,8 @@ body {
         display: flex;
         content: "";
 
-        background: url("/images/price-schedule-escape-head.png") center/contain
-          no-repeat;
+        background: url("../images/price-schedule-escape-head.png")
+          center/contain no-repeat;
         max-width: 367px;
         width: 100%;
         height: 60px;
@@ -776,7 +778,7 @@ body {
     align-items: center;
     text-align: center;
     padding-top: 100px;
-    background: url("/images/best-recipe-info.png") center/contain no-repeat;
+    background: url("../images/best-recipe-info.png") center/contain no-repeat;
     height: 135px;
   }
 
@@ -823,7 +825,8 @@ body {
       justify-content: space-between;
       width: 100%;
       align-items: center;
-      background: url("/images/best-recipe-about-bg.jpg") center/cover no-repeat;
+      background: url("../images/best-recipe-about-bg.jpg") center/cover
+        no-repeat;
       border: 10px solid $color-white;
       max-width: 840px;
       height: 100%;
