@@ -1,0 +1,1132 @@
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair";
+  src: url("/fonts/Playfair_9pt-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ProximaNova";
+  src: url("/fonts/ProximaNova-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Scriptina";
+  src: url("/fonts/scriptina.regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/**
+    Нормализация блочной модели
+   */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+      Убираем внутренние отступы слева тегам списков,
+      у которых есть атрибут class
+     */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+      Убираем внешние отступы body и двум другим тегам,
+      у которых есть атрибут class
+     */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+      Убираем внешние отступы вертикали нужным тегам,
+      у которых есть атрибут class
+     */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+      Убираем стандартный маркер маркированному списку,
+      у которого есть атрибут class
+     */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+      Обнуляем вертикальные внешние отступы параграфа,
+      объявляем локальную переменную для внешнего отступа вниз,
+      чтобы избежать взаимодействие с более сложным селектором
+     */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+      Внешний отступ вниз для параграфа без атрибута class,
+      который расположен не последним среди своих соседних элементов
+     */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+      Упрощаем работу с изображениями
+     */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+      Наследуем свойства шрифт для полей ввода
+     */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+html {
+  /**
+        Пригодится в большинстве ситуаций
+        (когда, например, нужно будет "прижать" футер к низу сайта)
+       */
+  height: 100%;
+}
+
+/**
+      Плавный скролл
+     */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+        Пригодится в большинстве ситуаций
+        (когда, например, нужно будет "прижать" футер к низу сайта)
+       */
+  min-height: 100%;
+  /**
+        Унифицированный интерлиньяж
+       */
+  line-height: 1.5;
+}
+
+/**
+      Приводим к единому цвету svg-элементы
+     */
+// svg *[fill] {
+//   fill: currentColor;
+// }
+// svg *[stroke] {
+//   stroke: currentColor;
+// }
+
+/**
+      Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+     */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+      Удаляем все анимации и переходы для людей,
+      которые предпочитают их не использовать
+     */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+$font-family-main: "ProximaNova", sans-serif;
+$font-family-calligraphy: "Scriptina", sans-serif;
+$font-family-title: "Alegreya", sans-serif;
+$font-family-main-title: "Playfair", sans-serif;
+
+$color-white: #fff;
+$color-gray: #56534c;
+$color-light-gray: #979285;
+$color-bronce: #a47d5e;
+$color-light-bronce: #c9b176;
+$color-more-light-bronce: #dfc691;
+
+$container-width-l: 1600px;
+$container-width: 1260px;
+$container-padding-x: 15px;
+
+$filter-shadow: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+
+@mixin display-align {
+  display: flex;
+  align-items: center;
+}
+@mixin font($family, $weight) {
+  font-family: $family;
+  font-weight: $weight;
+}
+
+body {
+  background-color: #f3f1e9;
+  font-family: $font-family-main;
+  font-size: 14px;
+}
+.text-small {
+  font-size: clamp(12px, 0.875vw, 14px);
+  font-weight: 400;
+  color: $color-gray;
+  letter-spacing: 1px;
+}
+.text-normal {
+  font-size: clamp(14px, 1.5vw, 24px);
+}
+.text-big {
+  font-size: clamp(30px, 3vw, 48px);
+  @include font($font-family-title, 700);
+  letter-spacing: 0.25px;
+}
+.addition-text {
+  @include font($font-family-title, 700);
+  text-transform: uppercase;
+  color: $color-bronce;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+.container-wide {
+  max-width: $container-width-l + $container-padding-x * 2;
+  margin-inline: auto;
+  padding-inline: $container-padding-x;
+}
+.container {
+  max-width: $container-width + $container-padding-x * 2;
+  margin-inline: auto;
+  padding-inline: $container-padding-x;
+}
+.content {
+  color: $color-white;
+}
+.visually-hidden {
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+.header-link {
+  text-decoration: none;
+  color: $color-white;
+}
+
+.header {
+  color: $color-white;
+}
+.header-include {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  @include display-align();
+  justify-content: space-evenly;
+  min-height: 70px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.header-logo {
+  @include display-align();
+  font-family: $font-family-calligraphy;
+  font-size: 30px;
+  line-height: 2.4;
+  letter-spacing: 3px;
+}
+
+.header-menu {
+  &-list {
+    display: flex;
+    justify-content: center;
+    column-gap: 70px;
+  }
+  &-item {
+    font-family: $font-family-title;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 2.4;
+    a {
+      transition-duration: 0.2s;
+      padding-block: 10px;
+      padding-inline: 5px;
+    }
+    :hover {
+      color: $color-more-light-bronce;
+    }
+  }
+}
+
+.header-soc1al-media-list {
+  @include display-align();
+  justify-content: space-between;
+  column-gap: 20px;
+}
+
+.banner {
+  position: relative;
+  @include display-align();
+  flex-direction: column;
+  justify-content: center;
+  background: url("/images/main-images-bread.jpg") top / cover no-repeat;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  row-gap: 60px;
+  padding-inline: 15px;
+
+  &-title {
+    font-family: $font-family-main-title;
+    font-size: clamp(64px, 5.75vw, 92px);
+    letter-spacing: 0.75px;
+    font-weight: 700;
+    text-align: center;
+  }
+  &-description {
+    font-weight: 400;
+    letter-spacing: 1px;
+    max-width: 550px;
+    text-align: center;
+    line-height: 36px;
+  }
+  &-button {
+    a {
+      text-decoration: none;
+      color: $color-white;
+      font-family: $font-family-title;
+      text-transform: uppercase;
+      width: 200px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.3);
+      font-size: 14px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      @include display-align();
+      justify-content: center;
+      transition-duration: 0.2s;
+    }
+    a:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.art-cake {
+  color: $color-gray;
+  background: url("/images/art-of-cakes-background.jpg") center/cover no-repeat;
+
+  &-border-top {
+    position: absolute;
+    content: "";
+    background: url("/icons/border-bullets.png") center/contain no-repeat;
+    width: 100%;
+    height: 100px;
+    margin-top: -50px;
+    z-index: 2;
+  }
+  &-section {
+    @include display-align();
+    justify-content: space-around;
+    padding-top: 100px;
+    padding-bottom: 120px;
+  }
+  &-body {
+    @include display-align();
+    flex-direction: column;
+    text-align: center;
+    row-gap: 10px;
+    margin-top: -100px;
+  }
+  &-description {
+    max-width: 440px;
+  }
+  &-chef {
+    @include font($font-family-title, 700);
+    padding-top: 40px;
+    &-block {
+      @include display-align();
+      column-gap: 50px;
+      padding-top: 40px;
+    }
+  }
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  &-images {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      background: url("/images/12-side-art-cake.png") center/contain no-repeat;
+      top: 9.5em;
+      left: 13em;
+      width: 250px;
+      aspect-ratio: 1;
+      opacity: 0.95;
+    }
+    &::after {
+      position: absolute;
+      content: attr(data-title);
+      font-family: $font-family-title;
+      font-size: 30px;
+      color: $color-light-bronce;
+      letter-spacing: 0.5px;
+      max-width: 150px;
+      text-align: center;
+      top: 7.2em;
+      left: 7.8em;
+    }
+  }
+  &-border {
+    border: 1px solid #d7d5ca;
+    padding-inline: 5px;
+    border-inline: none;
+    padding-block: 23px;
+  }
+  &-initial {
+    @include font($font-family-title, 400);
+  }
+
+  &-image {
+    img {
+      height: auto;
+    }
+  }
+  &-calligraphy {
+    @include font($font-family-calligraphy, 400);
+    color: $color-bronce;
+    letter-spacing: 0.25px;
+    max-width: 240px;
+    padding-bottom: 10px;
+  }
+}
+
+.tasty-cook {
+  color: $color-gray;
+  background: url("/images/tasty-cook-background.jpg") center/cover no-repeat;
+  padding-inline: 115px;
+
+  &-section {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1070px;
+    padding-top: 140px;
+    padding-bottom: 110px;
+    filter: $filter-shadow;
+  }
+  &-right-blok {
+    position: relative;
+    margin-left: -200px;
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: left;
+    padding-inline: 60px;
+    z-index: 1;
+    &::after {
+      position: absolute;
+      content: "";
+      background: url("/images/tasty-cook-background-right.png") center/contain
+        no-repeat;
+      z-index: -1;
+      width: 270px;
+      height: 294px;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  &-description {
+    margin-top: 70px;
+    max-width: 400px;
+    margin-bottom: 50px;
+  }
+  &-rating-list {
+    display: flex;
+    column-gap: 10px;
+  }
+  &-rating-disabled {
+    polygon {
+      fill: #56534c;
+      stroke: #56534c;
+    }
+  }
+  &-button-previous-svg {
+    transform: rotate(180deg);
+  }
+  &-button {
+    transition: 0.2s;
+    &:hover {
+      fill: $color-light-bronce;
+    }
+  }
+  &-slide {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    column-gap: 15px;
+    margin-top: 40px;
+  }
+  &-list {
+    display: flex;
+    column-gap: 20px;
+  }
+  &-item-image {
+    height: auto;
+    border-radius: 50%;
+  }
+  &-button-pagination {
+    display: flex;
+    align-self: center;
+    margin-top: 15px;
+    column-gap: 10px;
+    &-item {
+      width: 10px;
+      aspect-ratio: 1;
+      background-color: #d8bba3;
+      border-radius: 50%;
+      border: 1px solid #d8bba3;
+      transition: 0.2s;
+      &:hover {
+        background-color: transparent;
+      }
+      &-active {
+        background-color: transparent;
+      }
+    }
+  }
+  &-ready-in {
+    position: absolute;
+    width: 200px;
+    aspect-ratio: 1;
+    background: url("/images/tasty-cook-ready-in-bg.png") center/cover no-repeat;
+    filter: $filter-shadow;
+    top: -4em;
+    right: -8em;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-title {
+      @include font($font-family-title, 700);
+      text-transform: uppercase;
+      font-size: clamp(16px, 1.12vw, 18px);
+      letter-spacing: 1px;
+      color: $color-bronce;
+    }
+    &-time {
+      @include font($font-family-title, 700);
+      font-size: clamp(72px, 5.75vw, 92px);
+      letter-spacing: 1px;
+      line-height: 80px;
+      color: $color-more-light-bronce;
+    }
+    &-mins {
+      @include font($font-family-title, 700);
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: $color-light-gray;
+    }
+  }
+}
+
+.price-schedule {
+  position: relative;
+  font-family: $font-family-title;
+  background: url("/images/price-schedule-bg.jpg") center/cover no-repeat;
+  &::after {
+    position: absolute;
+    content: "";
+    background: url("/images/price-schedule-right-image.png") center/contain
+      no-repeat;
+    width: 346px;
+    height: 204px;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+  }
+  &-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+    padding-block: 90px;
+  }
+  &-menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 200px;
+    &-title {
+      font-size: clamp(42px, 3.75vw, 60px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    &-subtitle {
+      font-size: clamp(16px, 1.12vw, 18px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #c8a593;
+      text-transform: uppercase;
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+      row-gap: 15px;
+    }
+    &-item {
+      &-title {
+        font-size: clamp(22px, 1.87vw, 30px);
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      &-description {
+        font-family: $font-family-main;
+        font-size: clamp(12px, 1vw, 16px);
+        letter-spacing: 0.5px;
+        margin-bottom: 5px;
+      }
+      &-price {
+        font-size: clamp(24px, 2.25vw, 36px);
+        color: $color-more-light-bronce;
+        letter-spacing: 0.5px;
+      }
+      &::before {
+        display: flex;
+        content: "";
+        background: url("/icons/schedule-price-spikelets.png") center/cover
+          no-repeat;
+        width: 90px;
+        height: 27px;
+        margin: 0 auto;
+      }
+    }
+  }
+  &-escape {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $color-gray;
+    // background: url("/images/price-schedule-escape-bg.png") center/contain
+    //   no-repeat;
+    background-color: #f3f1e9;
+    border: 1px dashed #9e9c93;
+    margin: 10px;
+    max-width: 420px;
+    row-gap: 80px;
+    border-bottom-left-radius: 20px;
+
+    &-all {
+      background-color: #f3f1e9;
+      border-bottom-left-radius: 20px;
+    }
+    &-head {
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding-inline: 20px;
+
+      &-est-block {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+      &-est {
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+      }
+      &::after {
+        display: flex;
+        content: "";
+
+        background: url("/images/price-schedule-escape-head.png") center/contain
+          no-repeat;
+        max-width: 367px;
+        width: 100%;
+        height: 60px;
+      }
+    }
+    &-body {
+      // padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 55px;
+      margin-inline: 45px;
+      max-width: 330px;
+      row-gap: 50px;
+      &-title {
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: 0.25px;
+        line-height: 60px;
+      }
+      &-description {
+        font-family: $font-family-main;
+      }
+      &-button {
+        width: 190px;
+        height: 50px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        font-size: clamp(16px, 1.12vw, 18px);
+        color: $color-bronce;
+        font-weight: 700;
+        border: 1px solid #9e9c93;
+        cursor: pointer;
+        transition: 0.2s;
+        z-index: 2;
+        &:hover {
+          background-color: $color-light-gray;
+        }
+      }
+    }
+  }
+}
+
+.best-recipe {
+  background-color: #f3f1e9;
+  color: $color-gray;
+  &-container {
+    padding-bottom: 100px;
+  }
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    background: url("/images/best-recipe-info.png") center/contain no-repeat;
+    height: 135px;
+  }
+
+  &-body {
+    display: flex;
+    column-gap: 80px;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+
+    &-info {
+      &-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      &-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 20px;
+        max-width: 250px;
+        text-align: center;
+        &:not(:first-child) {
+          margin-top: 20px;
+        }
+        &-image {
+          border-radius: 50%;
+          box-shadow: 1px 6px 11px $color-light-gray;
+          // fill: 5px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+        &-title {
+          @include font($font-family-title, 700);
+          font-size: clamp(24px, 1.87vw, 30px);
+          letter-spacing: 0.25px;
+          color: $color-bronce;
+        }
+      }
+    }
+    &-about {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      background: url("/images/best-recipe-about-bg.jpg") center/cover no-repeat;
+      border: 10px solid $color-white;
+      max-width: 840px;
+      height: 100%;
+      &-time-cooke {
+        margin-block: -20px;
+      }
+      &-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-white;
+        border: 1px dashed $color-light-bronce;
+        width: 170px;
+        height: 60px;
+        text-decoration: none;
+        color: $color-more-light-bronce;
+        text-transform: uppercase;
+        font-size: 18px;
+        @include font($font-family-title, 700);
+        letter-spacing: 0.5px;
+        transition: 0.2s;
+        margin-top: auto;
+        margin-bottom: -30px;
+        margin-left: -40px;
+
+        &:hover {
+          background-color: darken($color-white, 10%);
+        }
+      }
+      &-time-cooke {
+        .tasty-cook-ready-in {
+          position: relative;
+          top: 0;
+          right: 0;
+          &:not(:last-child) {
+            background: none;
+            background-color: $color-white;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+}
+.time-cooke {
+  color: $color-gray;
+  font-size: 60px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 70px;
+  color: $color-gray;
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+    padding-inline: 40px;
+    border-block: 1px solid #c2beba;
+  }
+  &-logo {
+    font-family: $font-family-calligraphy;
+    font-size: 30px;
+    letter-spacing: 3px;
+    &-link {
+      text-decoration: none;
+      color: $color-gray;
+    }
+  }
+  &-item {
+    font-family: $font-family-title;
+    font-size: clamp(13px, 0.875vw, 14px);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    padding-block: 30px;
+    &-link {
+      text-decoration: none;
+      color: $color-gray;
+      white-space: nowrap;
+      transition-duration: 0.2s;
+      &:hover {
+        color: darken($color-gray, 50%);
+      }
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .art-cake {
+    &-section {
+      flex-direction: column-reverse;
+      padding-top: 80px;
+      padding-bottom: 50px;
+    }
+    &-body {
+      margin-top: 20px;
+    }
+    &-chef {
+      padding-top: 10px;
+      &-block {
+        padding-top: 20px;
+      }
+    }
+  }
+  .tasty-cook {
+    padding-inline: 0;
+    padding-right: 70px;
+    &-section {
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: center;
+    }
+    &-right-blok {
+      margin-left: 0;
+      padding-block: 50px;
+      position: relative;
+    }
+    &-left-block {
+      img {
+        width: 520px;
+        height: auto;
+      }
+    }
+    &-ready-in {
+      width: 150px;
+      right: -5em;
+    }
+  }
+  .price-schedule {
+    &-section {
+      justify-content: space-around;
+    }
+    &-menu {
+      margin-left: 0;
+    }
+  }
+  .best-recipe {
+    &-body {
+      flex-direction: column;
+      row-gap: 20px;
+      padding-left: 30px;
+      padding-top: 20px;
+      &-about {
+        margin-right: 10px;
+      }
+      &-info-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      &-info {
+        margin-left: -30px;
+      }
+    }
+  }
+  .footer {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .header-menu-list {
+    column-gap: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .header-include {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-inline: 15px;
+  }
+  .header-menu {
+    order: 1;
+    flex-basis: 100%;
+    &-list {
+      flex-wrap: wrap;
+    }
+  }
+
+  .banner {
+    row-gap: 30px;
+    &-title {
+      padding-top: 70px;
+    }
+  }
+  .art-cake {
+    &-item {
+      width: 157px;
+      height: auto;
+    }
+    &-images {
+      &::before {
+        top: 5em;
+        left: 7em;
+        width: 150px;
+      }
+      &::after {
+        font-size: 18px;
+        max-width: 150px;
+        top: 6.8em;
+        left: 5.5em;
+      }
+    }
+    &-list {
+      gap: 5px;
+    }
+  }
+
+  .tasty-cook {
+    padding-right: 30px;
+    &-right-blok {
+      padding-inline: 30px;
+    }
+    &-list {
+      column-gap: 10px;
+    }
+    &-button {
+      &-next {
+        display: none;
+      }
+      &-previous {
+        display: none;
+      }
+    }
+    &-ready-in {
+      width: 130px;
+      right: -3em;
+      top: -6em;
+    }
+    &-left-block {
+      img {
+        width: 460px;
+        height: auto;
+      }
+    }
+  }
+  .price-schedule {
+    &-section {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &-escape {
+      row-gap: 50px;
+      &-body {
+        margin-inline: 20px;
+        &-title {
+          font-size: 34px;
+        }
+      }
+      &-all {
+        margin-top: 50px;
+      }
+    }
+    &::after {
+      max-width: 230px;
+    }
+  }
+  .footer-list {
+    column-gap: 10px;
+    padding-inline: 10px;
+  }
+}
+// @media (max-width: 470px) {
+//   .price-schedule {
+//     &::after {
+//       width: 230px;
+//     }
+//     &-section {
+//       flex-direction: column;
+//       justify-content: center;
+//       align-items: center;
+//       padding-bottom: 50px;
+//     }
+
+//     &-escape {
+//       justify-content: center;
+//       row-gap: 0px;
+//       max-width: 400px;
+
+//       height: 500px;
+//       &-body {
+//         row-gap: 30px;
+//         max-width: 300px;
+//         padding-inline: 5px;
+
+//         &-title {
+//           font-size: 34px;
+//         }
+//         &-description {
+//           font-size: 11px;
+//         }
+//       }
+//       &-head {
+//         &-est-block {
+//           padding-top: 15px;
+//         }
+//         &::after {
+//           width: 270px;
+//         }
+//       }
+//     }
+//   }
+// }

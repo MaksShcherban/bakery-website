@@ -1,0 +1,1043 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alegreya";
+  src: url("/fonts/Alegreya-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair";
+  src: url("/fonts/Playfair_9pt-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ProximaNova";
+  src: url("/fonts/ProximaNova-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Scriptina";
+  src: url("/fonts/scriptina.regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/**
+    Нормализация блочной модели
+   */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+/**
+      Убираем внутренние отступы слева тегам списков,
+      у которых есть атрибут class
+     */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+      Убираем внешние отступы body и двум другим тегам,
+      у которых есть атрибут class
+     */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+      Убираем внешние отступы вертикали нужным тегам,
+      у которых есть атрибут class
+     */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+      Убираем стандартный маркер маркированному списку,
+      у которого есть атрибут class
+     */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+      Обнуляем вертикальные внешние отступы параграфа,
+      объявляем локальную переменную для внешнего отступа вниз,
+      чтобы избежать взаимодействие с более сложным селектором
+     */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+      Внешний отступ вниз для параграфа без атрибута class,
+      который расположен не последним среди своих соседних элементов
+     */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+      Упрощаем работу с изображениями
+     */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+      Наследуем свойства шрифт для полей ввода
+     */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+html {
+  /**
+        Пригодится в большинстве ситуаций
+        (когда, например, нужно будет "прижать" футер к низу сайта)
+       */
+  height: 100%;
+}
+
+/**
+      Плавный скролл
+     */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+        Пригодится в большинстве ситуаций
+        (когда, например, нужно будет "прижать" футер к низу сайта)
+       */
+  min-height: 100%;
+  /**
+        Унифицированный интерлиньяж
+       */
+  line-height: 1.5;
+}
+
+/**
+      Приводим к единому цвету svg-элементы
+     */
+/**
+      Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+     */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+      Удаляем все анимации и переходы для людей,
+      которые предпочитают их не использовать
+     */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  background-color: #f3f1e9;
+  font-family: "ProximaNova", sans-serif;
+  font-size: 14px;
+}
+
+.text-small {
+  font-size: clamp(12px, 0.875vw, 14px);
+  font-weight: 400;
+  color: #56534c;
+  letter-spacing: 1px;
+}
+
+.text-normal {
+  font-size: clamp(14px, 1.5vw, 24px);
+}
+
+.text-big {
+  font-size: clamp(30px, 3vw, 48px);
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+}
+
+.addition-text {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #a47d5e;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.container-wide {
+  max-width: 1630px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+.container {
+  max-width: 1290px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+.content {
+  color: #fff;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
+}
+
+.header-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.header {
+  color: #fff;
+}
+
+.header-include {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  min-height: 70px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  font-family: "Scriptina", sans-serif;
+  font-size: 30px;
+  line-height: 2.4;
+  letter-spacing: 3px;
+}
+
+.header-menu-list {
+  display: flex;
+  justify-content: center;
+  -moz-column-gap: 70px;
+       column-gap: 70px;
+}
+.header-menu-item {
+  font-family: "Alegreya", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  line-height: 2.4;
+}
+.header-menu-item a {
+  transition-duration: 0.2s;
+  padding-block: 10px;
+  padding-inline: 5px;
+}
+.header-menu-item :hover {
+  color: #dfc691;
+}
+
+.header-soc1al-media-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: url("/images/main-images-bread.jpg") top/cover no-repeat;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  row-gap: 60px;
+  padding-inline: 15px;
+}
+.banner-title {
+  font-family: "Playfair", sans-serif;
+  font-size: clamp(64px, 5.75vw, 92px);
+  letter-spacing: 0.75px;
+  font-weight: 700;
+  text-align: center;
+}
+.banner-description {
+  font-weight: 400;
+  letter-spacing: 1px;
+  max-width: 550px;
+  text-align: center;
+  line-height: 36px;
+}
+.banner-button a {
+  text-decoration: none;
+  color: #fff;
+  font-family: "Alegreya", sans-serif;
+  text-transform: uppercase;
+  width: 200px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+}
+.banner-button a:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.art-cake {
+  color: #56534c;
+  background: url("/images/art-of-cakes-background.jpg") center/cover no-repeat;
+}
+.art-cake-border-top {
+  position: absolute;
+  content: "";
+  background: url("/icons/border-bullets.png") center/contain no-repeat;
+  width: 100%;
+  height: 100px;
+  margin-top: -50px;
+  z-index: 2;
+}
+.art-cake-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+.art-cake-body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  row-gap: 10px;
+  margin-top: -100px;
+}
+.art-cake-description {
+  max-width: 440px;
+}
+.art-cake-chef {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  padding-top: 40px;
+}
+.art-cake-chef-block {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
+  padding-top: 40px;
+}
+.art-cake-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.art-cake-images {
+  position: relative;
+}
+.art-cake-images::before {
+  position: absolute;
+  content: "";
+  background: url("/images/12-side-art-cake.png") center/contain no-repeat;
+  top: 9.5em;
+  left: 13em;
+  width: 250px;
+  aspect-ratio: 1;
+  opacity: 0.95;
+}
+.art-cake-images::after {
+  position: absolute;
+  content: attr(data-title);
+  font-family: "Alegreya", sans-serif;
+  font-size: 30px;
+  color: #c9b176;
+  letter-spacing: 0.5px;
+  max-width: 150px;
+  text-align: center;
+  top: 7.2em;
+  left: 7.8em;
+}
+.art-cake-border {
+  border: 1px solid #d7d5ca;
+  padding-inline: 5px;
+  border-inline: none;
+  padding-block: 23px;
+}
+.art-cake-initial {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 400;
+}
+.art-cake-image img {
+  height: auto;
+}
+.art-cake-calligraphy {
+  font-family: "Scriptina", sans-serif;
+  font-weight: 400;
+  color: #a47d5e;
+  letter-spacing: 0.25px;
+  max-width: 240px;
+  padding-bottom: 10px;
+}
+
+.tasty-cook {
+  color: #56534c;
+  background: url("/images/tasty-cook-background.jpg") center/cover no-repeat;
+  padding-inline: 115px;
+}
+.tasty-cook-section {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1070px;
+  padding-top: 140px;
+  padding-bottom: 110px;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+}
+.tasty-cook-right-blok {
+  position: relative;
+  margin-left: -200px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  text-align: left;
+  padding-inline: 60px;
+  z-index: 1;
+}
+.tasty-cook-right-blok::after {
+  position: absolute;
+  content: "";
+  background: url("/images/tasty-cook-background-right.png") center/contain no-repeat;
+  z-index: -1;
+  width: 270px;
+  height: 294px;
+  bottom: 0;
+  right: 0;
+}
+.tasty-cook-description {
+  margin-top: 70px;
+  max-width: 400px;
+  margin-bottom: 50px;
+}
+.tasty-cook-rating-list {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.tasty-cook-rating-disabled polygon {
+  fill: #56534c;
+  stroke: #56534c;
+}
+.tasty-cook-button-previous-svg {
+  transform: rotate(180deg);
+}
+.tasty-cook-button {
+  transition: 0.2s;
+}
+.tasty-cook-button:hover {
+  fill: #c9b176;
+}
+.tasty-cook-slide {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+  margin-top: 40px;
+}
+.tasty-cook-list {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.tasty-cook-item-image {
+  height: auto;
+  border-radius: 50%;
+}
+.tasty-cook-button-pagination {
+  display: flex;
+  align-self: center;
+  margin-top: 15px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.tasty-cook-button-pagination-item {
+  width: 10px;
+  aspect-ratio: 1;
+  background-color: #d8bba3;
+  border-radius: 50%;
+  border: 1px solid #d8bba3;
+  transition: 0.2s;
+}
+.tasty-cook-button-pagination-item:hover {
+  background-color: transparent;
+}
+.tasty-cook-button-pagination-item-active {
+  background-color: transparent;
+}
+.tasty-cook-ready-in {
+  position: absolute;
+  width: 200px;
+  aspect-ratio: 1;
+  background: url("/images/tasty-cook-ready-in-bg.png") center/cover no-repeat;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+  top: -4em;
+  right: -8em;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.tasty-cook-ready-in-title {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(16px, 1.12vw, 18px);
+  letter-spacing: 1px;
+  color: #a47d5e;
+}
+.tasty-cook-ready-in-time {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  font-size: clamp(72px, 5.75vw, 92px);
+  letter-spacing: 1px;
+  line-height: 80px;
+  color: #dfc691;
+}
+.tasty-cook-ready-in-mins {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #979285;
+}
+
+.price-schedule {
+  position: relative;
+  font-family: "Alegreya", sans-serif;
+  background: url("/images/price-schedule-bg.jpg") center/cover no-repeat;
+}
+.price-schedule::after {
+  position: absolute;
+  content: "";
+  background: url("/images/price-schedule-right-image.png") center/contain no-repeat;
+  width: 346px;
+  height: 204px;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+}
+.price-schedule-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: center;
+  padding-block: 90px;
+}
+.price-schedule-menu {
+  display: flex;
+  flex-direction: column;
+  margin-left: 200px;
+}
+.price-schedule-menu-title {
+  font-size: clamp(42px, 3.75vw, 60px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.price-schedule-menu-subtitle {
+  font-size: clamp(16px, 1.12vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #c8a593;
+  text-transform: uppercase;
+}
+.price-schedule-menu-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  row-gap: 15px;
+}
+.price-schedule-menu-item-title {
+  font-size: clamp(22px, 1.87vw, 30px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.price-schedule-menu-item-description {
+  font-family: "ProximaNova", sans-serif;
+  font-size: clamp(12px, 1vw, 16px);
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+.price-schedule-menu-item-price {
+  font-size: clamp(24px, 2.25vw, 36px);
+  color: #dfc691;
+  letter-spacing: 0.5px;
+}
+.price-schedule-menu-item::before {
+  display: flex;
+  content: "";
+  background: url("/icons/schedule-price-spikelets.png") center/cover no-repeat;
+  width: 90px;
+  height: 27px;
+  margin: 0 auto;
+}
+.price-schedule-escape {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #56534c;
+  background-color: #f3f1e9;
+  border: 1px dashed #9e9c93;
+  margin: 10px;
+  max-width: 420px;
+  row-gap: 80px;
+  border-bottom-left-radius: 20px;
+}
+.price-schedule-escape-all {
+  background-color: #f3f1e9;
+  border-bottom-left-radius: 20px;
+}
+.price-schedule-escape-head {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-inline: 20px;
+}
+.price-schedule-escape-head-est-block {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.price-schedule-escape-head-est {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+.price-schedule-escape-head::after {
+  display: flex;
+  content: "";
+  background: url("/images/price-schedule-escape-head.png") center/contain no-repeat;
+  max-width: 367px;
+  width: 100%;
+  height: 60px;
+}
+.price-schedule-escape-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 55px;
+  margin-inline: 45px;
+  max-width: 330px;
+  row-gap: 50px;
+}
+.price-schedule-escape-body-title {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  line-height: 60px;
+}
+.price-schedule-escape-body-description {
+  font-family: "ProximaNova", sans-serif;
+}
+.price-schedule-escape-body-button {
+  width: 190px;
+  height: 50px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  font-size: clamp(16px, 1.12vw, 18px);
+  color: #a47d5e;
+  font-weight: 700;
+  border: 1px solid #9e9c93;
+  cursor: pointer;
+  transition: 0.2s;
+  z-index: 2;
+}
+.price-schedule-escape-body-button:hover {
+  background-color: #979285;
+}
+
+.best-recipe {
+  background-color: #f3f1e9;
+  color: #56534c;
+}
+.best-recipe-container {
+  padding-bottom: 100px;
+}
+.best-recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 100px;
+  background: url("/images/best-recipe-info.png") center/contain no-repeat;
+  height: 135px;
+}
+.best-recipe-body {
+  display: flex;
+  -moz-column-gap: 80px;
+       column-gap: 80px;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.best-recipe-body-info-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.best-recipe-body-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  max-width: 250px;
+  text-align: center;
+}
+.best-recipe-body-info-item:not(:first-child) {
+  margin-top: 20px;
+}
+.best-recipe-body-info-item-image {
+  border-radius: 50%;
+  box-shadow: 1px 6px 11px #979285;
+}
+.best-recipe-body-info-item-title {
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 1.87vw, 30px);
+  letter-spacing: 0.25px;
+  color: #a47d5e;
+}
+.best-recipe-body-about {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  background: url("/images/best-recipe-about-bg.jpg") center/cover no-repeat;
+  border: 10px solid #fff;
+  max-width: 840px;
+  height: 100%;
+}
+.best-recipe-body-about-time-cooke {
+  margin-block: -20px;
+}
+.best-recipe-body-about-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px dashed #c9b176;
+  width: 170px;
+  height: 60px;
+  text-decoration: none;
+  color: #dfc691;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-family: "Alegreya", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: 0.2s;
+  margin-top: auto;
+  margin-bottom: -30px;
+  margin-left: -40px;
+}
+.best-recipe-body-about-link:hover {
+  background-color: #e6e6e6;
+}
+.best-recipe-body-about-time-cooke .tasty-cook-ready-in {
+  position: relative;
+  top: 0;
+  right: 0;
+}
+.best-recipe-body-about-time-cooke .tasty-cook-ready-in:not(:last-child) {
+  background: none;
+  background-color: #fff;
+  opacity: 0.8;
+}
+
+.time-cooke {
+  color: #56534c;
+  font-size: 60px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 70px;
+  color: #56534c;
+}
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  padding-inline: 40px;
+  border-block: 1px solid #c2beba;
+}
+.footer-logo {
+  font-family: "Scriptina", sans-serif;
+  font-size: 30px;
+  letter-spacing: 3px;
+}
+.footer-logo-link {
+  text-decoration: none;
+  color: #56534c;
+}
+.footer-item {
+  font-family: "Alegreya", sans-serif;
+  font-size: clamp(13px, 0.875vw, 14px);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding-block: 30px;
+}
+.footer-item-link {
+  text-decoration: none;
+  color: #56534c;
+  white-space: nowrap;
+  transition-duration: 0.2s;
+}
+.footer-item-link:hover {
+  color: black;
+}
+
+@media (max-width: 1080px) {
+  .art-cake-section {
+    flex-direction: column-reverse;
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+  .art-cake-body {
+    margin-top: 20px;
+  }
+  .art-cake-chef {
+    padding-top: 10px;
+  }
+  .art-cake-chef-block {
+    padding-top: 20px;
+  }
+  .tasty-cook {
+    padding-inline: 0;
+    padding-right: 70px;
+  }
+  .tasty-cook-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+  .tasty-cook-right-blok {
+    margin-left: 0;
+    padding-block: 50px;
+    position: relative;
+  }
+  .tasty-cook-left-block img {
+    width: 520px;
+    height: auto;
+  }
+  .tasty-cook-ready-in {
+    width: 150px;
+    right: -5em;
+  }
+  .price-schedule-section {
+    justify-content: space-around;
+  }
+  .price-schedule-menu {
+    margin-left: 0;
+  }
+  .best-recipe-body {
+    flex-direction: column;
+    row-gap: 20px;
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+  .best-recipe-body-about {
+    margin-right: 10px;
+  }
+  .best-recipe-body-info-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .best-recipe-body-info {
+    margin-left: -30px;
+  }
+  .footer {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .header-menu-list {
+    -moz-column-gap: 20px;
+         column-gap: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .header-include {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-inline: 15px;
+  }
+  .header-menu {
+    order: 1;
+    flex-basis: 100%;
+  }
+  .header-menu-list {
+    flex-wrap: wrap;
+  }
+  .banner {
+    row-gap: 30px;
+  }
+  .banner-title {
+    padding-top: 70px;
+  }
+  .art-cake-item {
+    width: 157px;
+    height: auto;
+  }
+  .art-cake-images::before {
+    top: 5em;
+    left: 7em;
+    width: 150px;
+  }
+  .art-cake-images::after {
+    font-size: 18px;
+    max-width: 150px;
+    top: 6.8em;
+    left: 5.5em;
+  }
+  .art-cake-list {
+    gap: 5px;
+  }
+  .tasty-cook {
+    padding-right: 30px;
+  }
+  .tasty-cook-right-blok {
+    padding-inline: 30px;
+  }
+  .tasty-cook-list {
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+  }
+  .tasty-cook-button-next {
+    display: none;
+  }
+  .tasty-cook-button-previous {
+    display: none;
+  }
+  .tasty-cook-ready-in {
+    width: 130px;
+    right: -3em;
+    top: -6em;
+  }
+  .tasty-cook-left-block img {
+    width: 460px;
+    height: auto;
+  }
+  .price-schedule-section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .price-schedule-escape {
+    row-gap: 50px;
+  }
+  .price-schedule-escape-body {
+    margin-inline: 20px;
+  }
+  .price-schedule-escape-body-title {
+    font-size: 34px;
+  }
+  .price-schedule-escape-all {
+    margin-top: 50px;
+  }
+  .price-schedule::after {
+    max-width: 230px;
+  }
+  .footer-list {
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    padding-inline: 10px;
+  }
+}/*# sourceMappingURL=style.css.map */

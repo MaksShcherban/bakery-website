@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sass/style.css" />
+    <title>Gustoso</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-include">
+        <div class="header-logo">
+          <a class="header-logo-link header-link" href="/">Gustoso</a>
+        </div>
+        <nav class="header-menu">
+          <ul class="header-menu-list text-small">
+            <li class="header-menu-item">
+              <a href="/" class="header-menu-link header-link">Welcome</a>
+            </li>
+            <li class="header-menu-item">
+              <a href="/" class="header-menu-link header-link">Menu</a>
+            </li>
+            <li class="header-menu-item">
+              <a href="/" class="header-menu-link header-link">reservations</a>
+            </li>
+            <li class="header-menu-item">
+              <a href="/" class="header-menu-link header-link">News</a>
+            </li>
+            <li class="header-menu-item">
+              <a href="/" class="header-menu-link header-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-soc1al-media">
+          <ul class="header-soc1al-media-list">
+            <li class="header-soc1al-media-item">
+              <a href="/" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="16px"
+                  height="13px"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    fill="rgb(239, 235, 228)"
+                    d="M15.1000,1.495 L14.500,2.992 C14.500,2.992 14.500,2.856 14.500,3.241 C14.500,3.515 14.456,3.776 14.392,4.029 C14.357,6.088 13.699,8.818 10.1000,10.973 C5.689,15.210 -0.000,11.471 -0.000,11.471 C4.500,11.471 4.500,9.974 4.500,9.974 C3.500,9.974 1.500,7.980 1.500,7.980 C1.1000,8.478 2.1000,7.980 2.1000,7.980 C0.500,6.483 0.500,4.987 0.500,4.987 C0.1000,5.485 1.1000,4.987 1.1000,4.987 C-0.500,2.992 0.1000,0.498 0.1000,0.498 C1.500,2.992 7.1000,3.989 7.1000,3.989 L8.083,3.948 C8.032,3.720 7.1000,3.235 7.1000,2.992 C7.1000,1.201 9.455,-0.001 11.250,-0.001 C12.238,-0.001 13.112,0.448 13.708,1.142 L13.1000,0.996 L15.500,-0.001 L14.500,1.994 L15.1000,1.495 Z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="header-soc1al-media-item">
+              <a href="/" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="8px"
+                  height="15px"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    fill="rgb(239, 235, 228)"
+                    d="M2.1000,14.1000 L2.1000,7.1000 L-0.000,7.999 L-0.000,5.1000 L2.1000,5.1000 L2.1000,2.999 C2.1000,0.661 4.182,0.004 6.229,0.004 C7.209,0.004 7.725,0.111 7.971,0.145 L7.971,2.511 L6.235,2.511 C5.122,2.511 4.1000,4.209 4.1000,4.1000 L4.1000,5.1000 L7.1000,5.1000 L7.500,7.999 L4.1000,7.999 L4.1000,14.999 L2.1000,14.1000 Z"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="header-soc1al-media-item">
+              <a href="/" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="14px"
+                  height="16px"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    fill="rgb(239, 235, 228)"
+                    d="M11.500,15.999 L2.500,15.999 C1.119,15.999 -0.000,14.880 -0.000,13.499 L-0.000,2.499 C-0.000,1.118 1.119,-0.001 2.500,-0.001 L11.500,-0.001 C12.881,-0.001 13.1000,1.118 13.1000,2.499 L13.1000,13.499 C13.1000,14.880 12.881,15.999 11.500,15.999 ZM6.1000,3.996 C4.793,3.996 3.004,5.787 3.004,7.997 C3.004,10.205 4.793,11.997 6.1000,11.997 C9.206,11.997 10.995,10.205 10.995,7.997 C10.995,5.787 9.206,3.996 6.1000,3.996 ZM11.1000,1.999 L9.1000,1.999 L9.1000,3.999 L11.1000,3.999 L11.1000,1.999 ZM12.1000,8.999 C12.1000,8.999 12.1000,8.999 12.1000,8.999 L12.1000,8.999 L12.1000,6.999 L11.1000,6.999 L11.1000,7.276 C11.984,7.267 11.966,7.264 11.950,7.255 C11.965,7.420 11.997,7.580 11.997,7.749 C11.997,10.647 9.760,12.996 6.1000,12.996 C4.240,12.996 2.002,10.647 2.002,7.749 C2.002,7.580 2.035,7.420 2.049,7.255 C2.034,7.264 2.015,7.267 1.1000,7.276 L1.1000,6.999 L0.1000,6.999 L0.1000,8.999 L0.1000,8.999 C0.1000,8.999 0.1000,8.999 0.1000,8.999 L0.1000,12.999 C0.1000,14.103 1.895,14.999 2.1000,14.999 L10.1000,14.999 C12.104,14.999 12.1000,14.103 12.1000,12.999 L12.1000,8.999 Z"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+      <section class="banner">
+        <h2 class="visually-hidden">Pastry with love</h2>
+        <div class="banner-title">Pastry with love</div>
+        <div class="banner-description text-normal">
+          <p>
+            We’re bringing you fresh ingredients every day in ways you can’t
+            resist
+          </p>
+        </div>
+        <div class="banner-button">
+          <a href="/">Our menu</a>
+        </div>
+      </section>
+      <section class="art-cake">
+        <h2 class="visually-hidden">Art of cakes</h2>
+        <div class="art-cake-border-top"></div>
+        <div class="art-cake-section container">
+          <div class="art-cake-body">
+            <div class="art-cake-title text-big">Art of cakes</div>
+            <div class="art-cake-addition-text addition-text">
+              we create delicious memories
+            </div>
+            <div class="art-cake-description text-small">
+              <p>
+                Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel
+                augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
+                rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem
+                quam semper libero, sit amet adipiscing sem neque sed.
+              </p>
+            </div>
+            <div class="art-cake-chef text-normal">Chef Cook</div>
+            <div class="art-cake-chef-block">
+              <div class="art-cake-initial art-cake-border text-normal">
+                Benito
+              </div>
+              <div class="art-cake-image">
+                <img
+                  src="images/art-cake-chef.png"
+                  alt="Our Chef"
+                  width="100"
+                  height="100"
+                />
+              </div>
+              <div class="art-cake-initial art-cake-border text-normal">
+                Gaspare
+              </div>
+            </div>
+            <div class="art-cake-calligraphy text-normal">
+              Unique creations for unique occasions.
+            </div>
+          </div>
+          <div class="art-cake-images" data-title="TASTES SO GOOD!">
+            <ul class="art-cake-list">
+              <li class="art-cake-item">
+                <img src="images/art-cake-1.jpg" alt="" />
+              </li>
+              <li class="art-cake-item">
+                <img src="images/art-cake-2.jpg" alt="" />
+              </li>
+              <li class="art-cake-item">
+                <img src="images/art-cake-3.jpg" alt="" />
+              </li>
+              <li class="art-cake-item">
+                <img src="images/art-cake-4.jpg" alt="" />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="tasty-cook">
+        <h2 class="visually-hidden">Tasty cook</h2>
+        <div class="tasty-cook-section container">
+          <div class="tasty-cook-left-block">
+            <img
+              src="/images/tasty-cook-left.png"
+              height="520"
+              width="585"
+              alt=""
+            />
+          </div>
+          <div class="tasty-cook-right-blok">
+            <div class="tasty-cook-title text-big">Tasty pancakes</div>
+            <div class="tasty-cook-addition addition-text">
+              season favourite
+            </div>
+            <div class="tasty-cook-description text-small">
+              <p>
+                Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien
+                ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet
+                orci eget eros faucibus.
+              </p>
+            </div>
+            <ul class="tasty-cook-rating-list">
+              <li class="tasty-cook-rating-item">
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  width="13px"
+                  height="13px"
+                  viewBox="0 0 512 512"
+                  enable-background="new 0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <polygon
+                    fill="#c9b176"
+                    stroke="#c9b176"
+                    stroke-width="37.6152"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    points="
+               259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+               29.274,197.007 188.165,173.919 "
+                  />
+                </svg>
+              </li>
+              <li class="tasty-cook-rating-item">
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  width="13px"
+                  height="13px"
+                  viewBox="0 0 512 512"
+                  enable-background="new 0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <polygon
+                    fill="#c9b176"
+                    stroke="#c9b176"
+                    stroke-width="37.6152"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    points="
+               259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+               29.274,197.007 188.165,173.919 "
+                  />
+                </svg>
+              </li>
+              <li class="tasty-cook-rating-item">
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  width="13px"
+                  height="13px"
+                  viewBox="0 0 512 512"
+                  enable-background="new 0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <polygon
+                    fill="#c9b176"
+                    stroke="#c9b176"
+                    stroke-width="37.6152"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    points="
+               259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+               29.274,197.007 188.165,173.919 "
+                  />
+                </svg>
+              </li>
+              <li class="tasty-cook-rating-item">
+                <svg
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  width="13px"
+                  height="13px"
+                  viewBox="0 0 512 512"
+                  enable-background="new 0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <polygon
+                    fill="#c9b176"
+                    stroke="#c9b176"
+                    stroke-width="37.6152"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    points="
+	259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+	29.274,197.007 188.165,173.919 "
+                  />
+                </svg>
+              </li>
+              <li class="tasty-cook-rating-item">
+                <svg
+                  class="tasty-cook-rating-disabled"
+                  version="1.1"
+                  id="Layer_1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  x="0px"
+                  y="0px"
+                  width="13px"
+                  height="13px"
+                  viewBox="0 0 512 512"
+                  enable-background="new 0 0 512 512"
+                  xml:space="preserve"
+                >
+                  <polygon
+                    fill="#c9b176"
+                    stroke="#c9b176"
+                    stroke-width="37.6152"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-miterlimit="10"
+                    points="
+               259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+               29.274,197.007 188.165,173.919 "
+                  />
+                </svg>
+              </li>
+            </ul>
+            <div class="tasty-cook-slide">
+              <div class="tasty-cook-button-previous">
+                <svg
+                  class="tasty-cook-button tasty-cook-button-previous-svg"
+                  style="
+                    width: 30px;
+                    height: 30px;
+                    vertical-align: middle;
+                    overflow: hidden;
+                  "
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M512.269015 1024a511.992548 511.992548 0 1 1 511.73106-511.73106 512.515523 512.515523 0 0 1-511.73106 511.73106z m0-971.426105a459.695045 459.695045 0 1 0 459.433557 459.695045A460.21802 460.21802 0 0 0 512.269015 52.573895z"
+                  />
+                  <path
+                    d="M659.526718 509.210811m-17.289056 19.617485l0 0q-17.289056 19.617486-36.906541 2.32843l-221.089062-194.847658q-19.617486-17.289056-2.32843-36.906542l0 0q17.289056-19.617486 36.906542-2.328429l221.089061 194.847658q19.617486 17.289056 2.32843 36.906541Z"
+                  />
+                  <path
+                    d="M625.322329 476.041569m17.289055 19.617486l0 0q17.289056 19.617486-2.328429 36.906541l-221.089062 194.847658q-19.617486 17.289056-36.906541-2.328429l0 0q-17.289056-19.617486 2.328429-36.906542l221.089062-194.847658q19.617486-17.289056 36.906541 2.32843Z"
+                  />
+                </svg>
+              </div>
+              <ul class="tasty-cook-list">
+                <li class="tasty-cook-item">
+                  <img
+                    class="tasty-cook-item-image"
+                    src="/images/tasty-cook-1.jpg"
+                    width="90"
+                    height="90"
+                    alt=""
+                  />
+                </li>
+                <li class="tasty-cook-item">
+                  <img
+                    class="tasty-cook-item-image"
+                    src="/images/tasty-cook-2.jpg"
+                    width="90"
+                    height="90"
+                    alt=""
+                  />
+                </li>
+                <li class="tasty-cook-item">
+                  <img
+                    class="tasty-cook-item-image"
+                    src="/images/tasty-cook-3.jpg"
+                    width="90"
+                    height="90"
+                    alt=""
+                  />
+                </li>
+              </ul>
+              <div class="tasty-cook-button-next">
+                <svg
+                  class="tasty-cook-button tasty-cook-button-next-svg"
+                  style="
+                    width: 30px;
+                    height: 30px;
+                    vertical-align: middle;
+                    overflow: hidden;
+                  "
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M512.269015 1024a511.992548 511.992548 0 1 1 511.73106-511.73106 512.515523 512.515523 0 0 1-511.73106 511.73106z m0-971.426105a459.695045 459.695045 0 1 0 459.433557 459.695045A460.21802 460.21802 0 0 0 512.269015 52.573895z"
+                  />
+                  <path
+                    d="M659.526718 509.210811m-17.289056 19.617485l0 0q-17.289056 19.617486-36.906541 2.32843l-221.089062-194.847658q-19.617486-17.289056-2.32843-36.906542l0 0q17.289056-19.617486 36.906542-2.328429l221.089061 194.847658q19.617486 17.289056 2.32843 36.906541Z"
+                  />
+                  <path
+                    d="M625.322329 476.041569m17.289055 19.617486l0 0q17.289056 19.617486-2.328429 36.906541l-221.089062 194.847658q-19.617486 17.289056-36.906541-2.328429l0 0q-17.289056-19.617486 2.328429-36.906542l221.089062-194.847658q19.617486-17.289056 36.906541 2.32843Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <ul class="tasty-cook-button-pagination">
+              <li
+                class="tasty-cook-button-pagination-item tasty-cook-button-pagination-item-active"
+              ></li>
+              <li class="tasty-cook-button-pagination-item"></li>
+              <li class="tasty-cook-button-pagination-item"></li>
+              <li class="tasty-cook-button-pagination-item"></li>
+            </ul>
+            <div class="tasty-cook-ready-in">
+              <div class="tasty-cook-ready-in-title">ready in</div>
+              <div class="tasty-cook-ready-in-time">
+                <time datetime="40">40</time>
+              </div>
+              <div class="tasty-cook-ready-in-mins">mins</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="price-schedule">
+        <h2 class="visually-hidden">Breakfast</h2>
+        <div class="price-schedule-section container">
+          <div class="price-schedule-menu">
+            <div class="price-schedule-menu-title">Breakfast</div>
+            <div class="price-schedule-menu-subtitle">
+              7am Breakfast? we’re open!
+            </div>
+            <ul class="price-schedule-menu-list">
+              <li class="price-schedule-menu-item">
+                <div class="price-schedule-menu-item-title">Full breakfast</div>
+                <div class="price-schedule-menu-item-description">
+                  <p>Duis ut tortor, et risus, vulputate pretium</p>
+                </div>
+                <div class="price-schedule-menu-item-price">$12.49</div>
+              </li>
+              <li class="price-schedule-menu-item">
+                <div class="price-schedule-menu-item-title">Toast & Jam</div>
+                <div class="price-schedule-menu-item-description">
+                  <p>Suspendisse, tempus, nterdum</p>
+                </div>
+                <div class="price-schedule-menu-item-price">$4.90</div>
+              </li>
+              <li class="price-schedule-menu-item">
+                <div class="price-schedule-menu-item-title">Muffins</div>
+                <div class="price-schedule-menu-item-description">
+                  <p>Fusce eget dui sodales est</p>
+                </div>
+                <div class="price-schedule-menu-item-price">$3.95</div>
+              </li>
+            </ul>
+          </div>
+          <div class="price-schedule-escape-all">
+            <div class="price-schedule-escape">
+              <div class="price-schedule-escape-head">
+                <div class="price-schedule-escape-head-est-block">
+                  <div class="price-schedule-escape-head-est text-small">
+                    est.
+                  </div>
+                  <div class="price-schedule-escape-head-est text-small">
+                    1893
+                  </div>
+                </div>
+              </div>
+              <div class="price-schedule-escape-body">
+                <div class="price-schedule-escape-body-title">
+                  Your morning <br />
+                  Escape with Flair
+                </div>
+                <div class="price-schedule-escape-body-description text-small">
+                  <p>
+                    Donec vitae sapien ut libero venenatis faucibus. Nullam quis
+                    ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis
+                    leo.
+                  </p>
+                </div>
+                <a type="button" class="price-schedule-escape-body-button">
+                  read
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="best-recipe">
+        <h2 class="visually-hidden">The best sandwich</h2>
+        <div class="best-recipe-container container">
+          <div class="best-recipe-info">
+            <div class="best-recipe-info-title text-big">
+              The Jibarito sandwich
+            </div>
+            <div class="best-recipe-info-description addition-text">
+              <p>the best sandwich you’ve ever tasted!</p>
+            </div>
+          </div>
+          <div class="best-recipe-body">
+            <div class="best-recipe-body-info">
+              <ul class="best-recipe-body-info-list">
+                <li class="best-recipe-body-info-item">
+                  <img
+                    class="best-recipe-body-info-item-image"
+                    src="/images/best-recipe-body-1.jpg"
+                    width="100"
+                    height="100"
+                    alt=""
+                  />
+                  <div class="best-recipe-body-info-item-title">
+                    Class aptent
+                  </div>
+                  <div
+                    class="best-recipe-body-info-item-description text-small"
+                  >
+                    <p>
+                      Quot alienum persecuti ut eam, nam ad atqui primis
+                      nusquam.
+                    </p>
+                  </div>
+                </li>
+                <li class="best-recipe-body-info-item">
+                  <img
+                    class="best-recipe-body-info-item-image"
+                    src="/images/best-recipe-body-2.jpg"
+                    width="100"
+                    height="100"
+                    alt=""
+                  />
+                  <div class="best-recipe-body-info-item-title">Nulla eget</div>
+                  <div
+                    class="best-recipe-body-info-item-description text-small"
+                  >
+                    <p>
+                      Nullam dictum felis eu pede mollis pretium Integer
+                      tincidunt.
+                    </p>
+                  </div>
+                </li>
+                <li class="best-recipe-body-info-item">
+                  <img
+                    class="best-recipe-body-info-item-image"
+                    src="/images/best-recipe-body-3.jpg"
+                    width="100"
+                    height="100"
+                    alt=""
+                  />
+                  <div class="best-recipe-body-info-item-title">
+                    Sed nibh purus
+                  </div>
+                  <div
+                    class="best-recipe-body-info-item-description text-small"
+                  >
+                    <p>
+                      Aenean eleifend tellus leo ligula, porttitor eu, consequat
+                      vitae.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="best-recipe-body-about">
+              <a
+                class="best-recipe-body-about-link"
+                href="/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Full recipe
+              </a>
+              <div class="best-recipe-body-about-time-cooke">
+                <div class="tasty-cook-ready-in">
+                  <div class="tasty-cook-ready-in-title">prep</div>
+                  <div class="tasty-cook-ready-in-time time-cooke">
+                    <time datetime="15">15</time>
+                  </div>
+                  <div class="tasty-cook-ready-in-mins">mins</div>
+                </div>
+                <div class="tasty-cook-ready-in">
+                  <div class="tasty-cook-ready-in-title">cook</div>
+                  <div class="tasty-cook-ready-in-time time-cooke">
+                    <time datetime="35">35</time>
+                  </div>
+                  <div class="tasty-cook-ready-in-mins">mins</div>
+                </div>
+                <div class="tasty-cook-ready-in">
+                  <div class="tasty-cook-ready-in-title">ready in</div>
+                  <div class="tasty-cook-ready-in-time">
+                    <time datetime="50">50</time>
+                  </div>
+                  <div class="tasty-cook-ready-in-mins">mins</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer container">
+      <div class="footer-left">
+        <ul class="footer-list">
+          <li class="footer-item">
+            <a class="footer-item-link" href="/">Our menu</a>
+          </li>
+          <li class="footer-item">~</li>
+          <li class="footer-item">
+            <a class="footer-item-link" href="/">Gallery</a>
+          </li>
+          <li class="footer-item">~</li>
+          <li class="footer-item">
+            <a class="footer-item-link" href="">Culture</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-logo">
+        <a class="footer-logo-link" href="/">Gustoso</a>
+      </div>
+      <div class="footer-right">
+        <ul class="footer-list">
+          <li class="footer-item">
+            <a class="footer-item-link" href="/">Events</a>
+          </li>
+          <li class="footer-item">~</li>
+          <li class="footer-item">
+            <a class="footer-item-link" href="/">Catering</a>
+          </li>
+          <li class="footer-item">~</li>
+          <li class="footer-item">
+            <a class="footer-item-link" href="/">Visit us</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
